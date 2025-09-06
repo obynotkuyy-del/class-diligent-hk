@@ -146,6 +146,94 @@
         border-color: #3b82f6; /* Tailwind blue-500 */
         box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25); /* Softer, wider shadow */
       }
+
+      /* --- Penambahan/Penyesuaian untuk Responsivitas Lanjutan --- */
+
+      /* Pastikan gambar dan media lainnya responsif secara default */
+      img,
+      video,
+      iframe {
+        max-width: 100%;
+        height: auto; /* Penting untuk menjaga aspek rasio */
+        display: block; /* Menghilangkan spasi bawah yang tidak diinginkan pada beberapa gambar */
+      }
+
+      /* Penyesuaian untuk layar sangat kecil (misalnya handphone) */
+      @media (max-width: 640px) {
+        body {
+          padding-top: 60px; /* Kurangi padding atas pada layar kecil */
+        }
+        .menu-toggle {
+          top: 15px;
+          left: 15px;
+          padding: 10px; /* Kurangi padding tombol toggle */
+          border-radius: 8px; /* Kurangi border-radius */
+        }
+        .sidebar {
+          width: 250px; /* Sedikit lebih kecil untuk layar sangat sempit */
+          transform: translateX(-250px);
+          padding-top: 60px; /* Sesuaikan padding sidebar */
+        }
+        .sidebar.open {
+          transform: translateX(0);
+        }
+        .page {
+          padding: 40px 15px; /* Kurangi padding konten pada layar kecil */
+        }
+        .page h1 {
+          font-size: 3.5rem; /* Sesuaikan ukuran font judul utama */
+          line-height: 1.2;
+        }
+        .page p {
+          font-size: 1rem; /* Sesuaikan ukuran font paragraf */
+        }
+        .btn-primary {
+          padding: 12px 25px; /* Kurangi padding tombol utama */
+          font-size: 0.9rem;
+        }
+        .card {
+          padding: 20px; /* Kurangi padding card */
+        }
+        .card h5 {
+          font-size: 1.5rem; /* Sesuaikan ukuran font judul card */
+        }
+        .card p {
+          font-size: 0.9rem; /* Sesuaikan ukuran font teks card */
+        }
+        .input-field {
+          padding: 10px; /* Kurangi padding input field */
+          border-radius: 8px; /* Kurangi border-radius input field */
+        }
+      }
+
+      /* Penyesuaian untuk layar sangat besar (misalnya TV atau monitor desktop besar) */
+      @media (min-width: 1280px) {
+        .page {
+          padding: 80px 40px; /* Tambah padding konten pada layar besar */
+        }
+        .max-w-6xl {
+          max-width: 1400px; /* Beri ruang lebih pada konten utama */
+        }
+        .page h1 {
+          font-size: 6rem; /* Perbesar ukuran font judul utama */
+        }
+        .page p {
+          font-size: 1.5rem; /* Perbesar ukuran font paragraf */
+        }
+        .btn-primary {
+          padding: 16px 40px; /* Perbesar padding tombol utama */
+          font-size: 1.1rem;
+        }
+        .card {
+          padding: 40px; /* Perbesar padding card */
+        }
+        .card h5 {
+          font-size: 2.5rem; /* Perbesar ukuran font judul card */
+        }
+        .card p {
+          font-size: 1.1rem; /* Perbesar ukuran font teks card */
+        }
+      }
     </style>
   </head>
   <body class="bg-gray-50 text-gray-900">
