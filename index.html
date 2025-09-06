@@ -13,7 +13,8 @@
       body {
         font-family: "Poppins", sans-serif;
         padding-top: 80px;
-        background-color: #f0f4f8; /* Light blue-gray background */
+        background-color: #f4f7f6; /* Light, clean background */
+        color: #333; /* Darker text for better contrast */
       }
       .sidebar {
         position: fixed;
@@ -22,13 +23,13 @@
         height: 100vh;
         width: 280px; /* Slightly wider sidebar */
         background: #ffffff;
-        border-right: 1px solid #e2e8f0;
+        border-right: 1px solid #e0e0e0; /* Softer border */
         transform: translateX(-280px);
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease-in-out; /* Smoother transition */
         z-index: 1000;
         overflow-y: auto;
         padding-top: 80px;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.08); /* Stronger, more defined shadow */
       }
       .sidebar.open {
         transform: translateX(0);
@@ -39,10 +40,10 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.6); /* Darker overlay */
+        background: rgba(0, 0, 0, 0.5); /* Slightly lighter overlay */
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.3s ease-in-out;
         z-index: 999;
       }
       .overlay.show {
@@ -54,27 +55,32 @@
         top: 20px;
         left: 20px;
         z-index: 1010;
-        background: #4299e1; /* Blue button */
+        background: #3b82f6; /* Tailwind blue-500 */
         color: #fff;
-        padding: 12px; /* Larger padding */
-        border-radius: 8px; /* More rounded corners */
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+        padding: 14px; /* Larger padding */
+        border-radius: 12px; /* More rounded corners */
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow */
         cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.2s ease;
+        transition: background-color 0.3s ease, transform 0.2s ease,
+          box-shadow 0.3s ease;
       }
       .menu-toggle:hover {
-        background-color: #3182ce; /* Darker blue on hover */
-        transform: translateY(-2px);
+        background-color: #2563eb; /* Tailwind blue-600 */
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
       }
       .page-slider {
         display: flex;
         width: 100%;
-        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother transition */
+        transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother transition */
       }
       .page {
         min-width: 100vw;
-        padding: 40px 20px; /* More padding for content */
+        padding: 60px 20px; /* More padding for content */
         box-sizing: border-box;
+        display: flex; /* Use flexbox for centering content */
+        align-items: center; /* Center vertically */
+        justify-content: center; /* Center horizontally */
       }
       .fade-in {
         animation: fadeIn 1s ease-in-out;
@@ -91,48 +97,54 @@
       }
       .card {
         background-color: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        border-radius: 16px; /* More rounded */
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1); /* Softer, deeper shadow */
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
       .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        transform: translateY(-8px); /* More pronounced lift */
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
       }
       .nav-item {
-        transition: background-color 0.2s ease, color 0.2s ease;
+        transition: background-color 0.2s ease, color 0.2s ease,
+          transform 0.1s ease;
       }
       .nav-item:hover {
-        background-color: #e2e8f0;
+        background-color: #eef2f5; /* Lighter hover background */
         color: #2d3748;
+        transform: translateX(5px); /* Slight slide effect */
       }
       .nav-item.active {
-        background-color: #4299e1;
+        background-color: #3b82f6; /* Tailwind blue-500 */
         color: #ffffff;
         font-weight: 600;
+        box-shadow: inset 3px 0 0 #1d4ed8; /* Subtle left border for active state */
       }
       .btn-primary {
-        background-color: #4299e1;
+        background-color: #3b82f6; /* Tailwind blue-500 */
         color: #ffffff;
-        padding: 12px 30px;
+        padding: 14px 35px; /* Larger padding */
         border-radius: 9999px;
         font-weight: 600;
-        transition: background-color 0.3s ease, transform 0.2s ease;
+        letter-spacing: 0.025em; /* Slight letter spacing */
+        transition: background-color 0.3s ease, transform 0.2s ease,
+          box-shadow 0.3s ease;
       }
       .btn-primary:hover {
-        background-color: #3182ce;
-        transform: translateY(-2px);
+        background-color: #2563eb; /* Tailwind blue-600 */
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
       }
       .input-field {
-        border: 1px solid #cbd5e0;
-        border-radius: 8px;
-        padding: 12px;
+        border: 1px solid #d1d5db; /* Lighter border */
+        border-radius: 10px; /* More rounded */
+        padding: 14px; /* Larger padding */
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
       }
       .input-field:focus {
         outline: none;
-        border-color: #4299e1;
-        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+        border-color: #3b82f6; /* Tailwind blue-500 */
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25); /* Softer, wider shadow */
       }
     </style>
   </head>
@@ -161,13 +173,15 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
       <div class="p-6">
-        <h2 class="text-2xl font-bold mb-8 text-gray-800">Diligent Class HK</h2>
+        <h2 class="text-3xl font-extrabold mb-10 text-gray-800">
+          Diligent Class HK
+        </h2>
         <nav>
-          <ul class="space-y-3">
+          <ul class="space-y-4">
             <li>
               <a
                 href="#"
-                class="nav-item block py-3 px-5 rounded-lg text-gray-700 hover:bg-gray-100"
+                class="nav-item block py-3 px-5 rounded-xl text-gray-700 hover:bg-gray-100"
                 data-page="0"
                 >🏠 Beranda</a
               >
@@ -175,15 +189,15 @@
             <li>
               <a
                 href="#"
-                class="nav-item block py-3 px-5 rounded-lg text-gray-700 hover:bg-gray-100"
+                class="nav-item block py-3 px-5 rounded-xl text-gray-700 hover:bg-gray-100"
                 data-page="1"
-                >💡 Tentang Kami</a
+                >💡 Tentang kami</a
               >
             </li>
             <li>
               <a
                 href="#"
-                class="nav-item block py-3 px-5 rounded-lg text-gray-700 hover:bg-gray-100"
+                class="nav-item block py-3 px-5 rounded-xl text-gray-700 hover:bg-gray-100"
                 data-page="2"
                 >🗓️ Jadwal</a
               >
@@ -191,7 +205,7 @@
             <li>
               <a
                 href="#"
-                class="nav-item block py-3 px-5 rounded-lg text-gray-700 hover:bg-gray-100"
+                class="nav-item block py-3 px-5 rounded-xl text-gray-700 hover:bg-gray-100"
                 data-page="3"
                 >📚 Penyimpanan</a
               >
@@ -199,7 +213,7 @@
             <li>
               <a
                 href="#"
-                class="nav-item block py-3 px-5 rounded-lg text-gray-700 hover:bg-gray-100 pl-10"
+                class="nav-item block py-3 px-5 rounded-xl text-gray-700 hover:bg-gray-100 pl-10"
                 data-page="4"
                 >📁 File Matkul</a
               >
@@ -207,7 +221,7 @@
             <li>
               <a
                 href="#"
-                class="nav-item block py-3 px-5 rounded-lg text-gray-700 hover:bg-gray-100 pl-10"
+                class="nav-item block py-3 px-5 rounded-xl text-gray-700 hover:bg-gray-100 pl-10"
                 data-page="5"
                 >📝 Materi Matkul</a
               >
@@ -215,7 +229,7 @@
             <li>
               <a
                 href="#"
-                class="nav-item block py-3 px-5 rounded-lg text-gray-700 hover:bg-gray-100 pl-10"
+                class="nav-item block py-3 px-5 rounded-xl text-gray-700 hover:bg-gray-100 pl-10"
                 data-page="6"
                 >📸 Class Album</a
               >
@@ -223,7 +237,7 @@
             <li>
               <a
                 href="#"
-                class="nav-item block py-3 px-5 rounded-lg text-gray-700 hover:bg-gray-100"
+                class="nav-item block py-3 px-5 rounded-xl text-gray-700 hover:bg-gray-100"
                 data-page="7"
                 >✉️ Hubungi Kami</a
               >
@@ -236,14 +250,14 @@
     <!-- Main Content Slider -->
     <div class="page-slider" id="page-slider">
       <!-- Home Page -->
-      <div class="page bg-f0f4f8">
+      <div class="page bg-f4f7f6">
         <div class="max-w-6xl mx-auto text-center fade-in">
           <h1
-            class="text-6xl md:text-8xl font-extrabold text-gray-800 mb-6 leading-tight"
+            class="text-6xl md:text-8xl font-extrabold text-gray-800 mb-8 leading-tight"
           >
             Welcome to <br /><span class="text-blue-600">Diligent Class</span>
           </h1>
-          <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+          <p class="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">
             Jelajahi informasi lengkap tentang kelas kami dan cari tau tentang
             DILIGENT CLASS HUKUM KELUARGA!
           </p>
@@ -256,28 +270,30 @@
       <!-- About Page -->
       <div class="page bg-white">
         <div class="max-w-6xl mx-auto fade-in">
-          <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">
-            💡 Tentang kelas kami
+          <h2
+            class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800"
+          >
+            💡 Tentang Kelas Kami
           </h2>
-          <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+              <p class="text-gray-700 leading-relaxed mb-8 text-lg md:text-xl">
                 Kelas kami mengedepankan kesederhanaan untuk menumbuhkan
                 pemahaman yang mendalam. Tanpa gangguan, hanya pembelajaran
                 murni yang berfokus pada esensi.
               </p>
-              <ul class="space-y-3 text-gray-700 text-lg">
+              <ul class="space-y-4 text-gray-700 text-lg md:text-xl">
                 <li class="flex items-center">
-                  <span class="text-blue-500 mr-3">✔️</span>Tujuan Pembelajaran
-                  yang Jelas
+                  <span class="text-blue-500 mr-3 text-2xl">✔️</span>Tujuan
+                  Pembelajaran yang Jelas
                 </li>
                 <li class="flex items-center">
-                  <span class="text-blue-500 mr-3">✔️</span>Fokus pada Aplikasi
-                  Praktis
+                  <span class="text-blue-500 mr-3 text-2xl">✔️</span>Fokus pada
+                  Aplikasi Praktis
                 </li>
                 <li class="flex items-center">
-                  <span class="text-blue-500 mr-3">✔️</span>Lingkungan Belajar
-                  Kolaboratif
+                  <span class="text-blue-500 mr-3 text-2xl">✔️</span>Lingkungan
+                  Belajar Kolaboratif
                 </li>
               </ul>
             </div>
@@ -285,7 +301,7 @@
               <img
                 src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a1d72d23-8c10-4566-b570-16d75105b468.png"
                 alt="Abstract illustration of interconnected educational elements"
-                class="w-full h-64 object-cover rounded-lg mb-6 shadow-md"
+                class="w-full h-72 object-cover rounded-lg mb-6 shadow-md"
                 onerror="this.style.display='none'"
               />
               <p class="text-gray-600 text-center text-sm">Struktur kelas D</p>
@@ -295,36 +311,38 @@
       </div>
 
       <!-- Schedule Page -->
-      <div class="page bg-f0f4f8">
+      <div class="page bg-f4f7f6">
         <div class="max-w-6xl mx-auto fade-in">
-          <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">
-            🗓️ Our 5-Day Learning Schedule
+          <h2
+            class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800"
+          >
+            🗓️ Jadwal mata kuliah kelas D
           </h2>
-          <div class="grid md:grid-cols-5 gap-6">
+          <div class="grid md:grid-cols-5 gap-8">
             <div class="card p-6 text-center">
-              <h4 class="text-xl font-semibold mb-3 text-blue-600">Senin</h4>
-              <p class="text-gray-700">10:00 AM - 12:00 PM</p>
-              <p class="text-sm text-gray-500 mt-2">Pembelajaran Dasar</p>
+              <h4 class="text-2xl font-semibold mb-3 text-blue-600">Senin</h4>
+              <p class="text-gray-700 text-lg">10:00 AM - 12:00 PM</p>
+              <p class="text-sm text-gray-500 mt-2">Coming Soon</p>
             </div>
             <div class="card p-6 text-center">
-              <h4 class="text-xl font-semibold mb-3 text-blue-600">Selasa</h4>
-              <p class="text-gray-700">10:00 AM - 12:00 PM</p>
-              <p class="text-sm text-gray-500 mt-2">Aplikasi Praktis</p>
+              <h4 class="text-2xl font-semibold mb-3 text-blue-600">Selasa</h4>
+              <p class="text-gray-700 text-lg">10:00 AM - 12:00 PM</p>
+              <p class="text-sm text-gray-500 mt-2">Coming Soon</p>
             </div>
             <div class="card p-6 text-center">
-              <h4 class="text-xl font-semibold mb-3 text-blue-600">Rabu</h4>
-              <p class="text-gray-700">10:00 AM - 12:00 PM</p>
-              <p class="text-sm text-gray-500 mt-2">Sesi Latihan & Diskusi</p>
+              <h4 class="text-2xl font-semibold mb-3 text-blue-600">Rabu</h4>
+              <p class="text-gray-700 text-lg">10:00 AM - 12:00 PM</p>
+              <p class="text-sm text-gray-500 mt-2">Coming Soon</p>
             </div>
             <div class="card p-6 text-center">
-              <h4 class="text-xl font-semibold mb-3 text-blue-600">Kamis</h4>
-              <p class="text-gray-700">10:00 AM - 12:00 PM</p>
-              <p class="text-sm text-gray-500 mt-2">Proyek Kelompok</p>
+              <h4 class="text-2xl font-semibold mb-3 text-blue-600">Kamis</h4>
+              <p class="text-gray-700 text-lg">10:00 AM - 12:00 PM</p>
+              <p class="text-sm text-gray-500 mt-2">Coming Soon</p>
             </div>
             <div class="card p-6 text-center">
-              <h4 class="text-xl font-semibold mb-3 text-blue-600">Jumat</h4>
-              <p class="text-gray-700">10:00 AM - 12:00 PM</p>
-              <p class="text-sm text-gray-500 mt-2">Review & Evaluasi</p>
+              <h4 class="text-2xl font-semibold mb-3 text-blue-600">Jumat</h4>
+              <p class="text-gray-700 text-lg">10:00 AM - 12:00 PM</p>
+              <p class="text-sm text-gray-500 mt-2">Coming Soon</p>
             </div>
           </div>
         </div>
@@ -333,66 +351,68 @@
       <!-- Resources Page (Overview) -->
       <div class="page bg-white">
         <div class="max-w-6xl mx-auto fade-in">
-          <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">
-            📚 Explore Our Learning Resources
+          <h2
+            class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800"
+          >
+            📚 jelajahi penyimpanan kami
           </h2>
-          <div class="grid md:grid-cols-3 gap-8">
-            <div class="card p-6 text-center">
+          <div class="grid md:grid-cols-3 gap-10">
+            <div class="card p-8 text-center">
               <img
                 src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d203b165-33bf-4ecc-acec-5371e89299e3.png"
                 alt="Digital document icon"
-                class="mx-auto mb-4 w-24 h-24 object-contain"
+                class="mx-auto mb-6 w-28 h-28 object-contain"
                 onerror="this.style.display='none'"
               />
-              <h5 class="font-semibold text-xl mb-2 text-gray-800">
+              <h5 class="font-semibold text-2xl mb-3 text-gray-800">
                 KUMPULAN FILE MATKUL
               </h5>
-              <p class="text-gray-600 text-sm mb-4">
+              <p class="text-gray-600 text-base mb-6">
                 Jangan khawatir kehilangan materi, semua ada di sini!
               </p>
               <a
                 href="#"
-                class="nav-item btn-primary inline-block text-sm"
+                class="nav-item btn-primary inline-block text-base"
                 data-page="4"
                 >Lihat Detail</a
               >
             </div>
-            <div class="card p-6 text-center">
+            <div class="card p-8 text-center">
               <img
                 src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/df7aacc1-1970-433e-8bd9-f663578cb272.png"
                 alt="Notebook with video icon"
-                class="mx-auto mb-4 w-24 h-24 object-contain"
+                class="mx-auto mb-6 w-28 h-28 object-contain"
                 onerror="this.style.display='none'"
               />
-              <h5 class="font-semibold text-xl mb-2 text-gray-800">
+              <h5 class="font-semibold text-2xl mb-3 text-gray-800">
                 CATATAN MATERI
               </h5>
-              <p class="text-gray-600 text-sm mb-4">
+              <p class="text-gray-600 text-base mb-6">
                 Rangkuman esensial untuk pemahaman cepat dan persiapan ujian.
               </p>
               <a
                 href="#"
-                class="nav-item btn-primary inline-block text-sm"
+                class="nav-item btn-primary inline-block text-base"
                 data-page="5"
                 >Lihat Detail</a
               >
             </div>
-            <div class="card p-6 text-center">
+            <div class="card p-8 text-center">
               <img
                 src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/acda469d-90e4-4fcd-93ce-13691865f007.png"
                 alt="Quiz sheet icon"
-                class="mx-auto mb-4 w-24 h-24 object-contain"
+                class="mx-auto mb-6 w-28 h-28 object-contain"
                 onerror="this.style.display='none'"
               />
-              <h5 class="font-semibold text-xl mb-2 text-gray-800">
+              <h5 class="font-semibold text-2xl mb-3 text-gray-800">
                 ALBUM CLASS
               </h5>
-              <p class="text-gray-600 text-sm mb-4">
+              <p class="text-gray-600 text-base mb-6">
                 Abadikan momen kebersamaan dan kenangan indah kita!
               </p>
               <a
                 href="#"
-                class="nav-item btn-primary inline-block text-sm"
+                class="nav-item btn-primary inline-block text-base"
                 data-page="6"
                 >Lihat Detail</a
               >
@@ -402,40 +422,42 @@
       </div>
 
       <!-- Kumpulan File Matkul Page -->
-      <div class="page bg-f0f4f8">
+      <div class="page bg-f4f7f6">
         <div class="max-w-6xl mx-auto fade-in">
-          <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">
+          <h2
+            class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800"
+          >
             📁 Kumpulan File Mata Kuliah
           </h2>
-          <div class="card p-8">
-            <p class="text-gray-700 mb-6 text-lg">
-              Di sini Anda dapat menemukan semua file mata kuliah penting yang
+          <div class="card p-10">
+            <p class="text-gray-700 mb-8 text-lg md:text-xl">
+              Di sini kalian dapat menemukan semua file mata kuliah penting yang
               telah kami kumpulkan. Unduh materi yang Anda butuhkan untuk
               mendukung proses belajar Anda!
             </p>
-            <ul class="list-disc list-inside space-y-3 text-gray-700 text-lg">
+            <ul class="list-disc list-inside space-y-4 text-gray-700 text-lg">
               <li>
                 <a href="#" class="text-blue-600 hover:underline font-medium"
-                  >Pengantar Hukum Keluarga.pdf</a
+                  >Coming Soon</a
                 >
               </li>
               <li>
                 <a href="#" class="text-blue-600 hover:underline font-medium"
-                  >Studi Kasus Hukum Waris.docx</a
+                  >Coming Soon</a
                 >
               </li>
               <li>
                 <a href="#" class="text-blue-600 hover:underline font-medium"
-                  >Materi Kuliah Perkawinan.pptx</a
+                  >Coming Soon</a
                 >
               </li>
               <li>
                 <a href="#" class="text-blue-600 hover:underline font-medium"
-                  >Tugas Akhir Hukum Adat.zip</a
+                  >Coming Soon</a
                 >
               </li>
             </ul>
-            <p class="text-gray-500 mt-8 text-sm text-center">
+            <p class="text-gray-500 mt-10 text-sm text-center">
               Jika ada file yang hilang atau rusak, atau Anda ingin menambahkan,
               silakan hubungi admin kami.
             </p>
@@ -446,55 +468,45 @@
       <!-- Catatan Materi Page -->
       <div class="page bg-white">
         <div class="max-w-6xl mx-auto fade-in">
-          <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">
+          <h2
+            class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800"
+          >
             📝 Catatan Materi Penting
           </h2>
-          <div class="card p-8">
-            <p class="text-gray-700 mb-6 text-lg">
-              Rangkuman materi penting dari setiap sesi perkuliahan. Sangat
-              berguna untuk review cepat dan persiapan ujian yang efektif.
-            </p>
-            <div class="space-y-6">
-              <div class="border-b pb-4 border-gray-200">
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">
-                  Sesi 1: Dasar-dasar Hukum Keluarga
+          <div class="card p-10">
+            <p class="text-gray-700 mb-8 text-lg md:text-xl">Coming Soon</p>
+            <div class="space-y-8">
+              <div class="border-b pb-6 border-gray-200">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-3">
+                  Coming Soon
                 </h3>
-                <p class="text-gray-600 mb-3">
-                  Mencakup definisi, ruang lingkup, dan prinsip-prinsip dasar
-                  hukum keluarga di Indonesia. Pahami fondasinya!
-                </p>
+                <p class="text-gray-600 mb-4 text-base">Coming Soon</p>
                 <a
                   href="#"
-                  class="text-blue-600 hover:underline text-sm font-medium inline-block"
-                  >Baca Catatan Lengkap →</a
+                  class="text-blue-600 hover:underline text-base font-medium inline-block"
+                  >Coming Soon→</a
                 >
               </div>
-              <div class="border-b pb-4 border-gray-200">
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">
-                  Sesi 2: Perkawinan dan Perceraian
+              <div class="border-b pb-6 border-gray-200">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-3">
+                  Coming Soon
                 </h3>
-                <p class="text-gray-600 mb-3">
-                  Pembahasan mendalam tentang syarat sah perkawinan, hak dan
-                  kewajiban suami istri, serta prosedur perceraian.
-                </p>
+                <p class="text-gray-600 mb-4 text-base">Coming Soon</p>
                 <a
                   href="#"
-                  class="text-blue-600 hover:underline text-sm font-medium inline-block"
-                  >Baca Catatan Lengkap →</a
+                  class="text-blue-600 hover:underline text-base font-medium inline-block"
+                  >Coming Soon→</a
                 >
               </div>
               <div>
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">
-                  Sesi 3: Hukum Waris
+                <h3 class="text-2xl font-semibold text-gray-800 mb-3">
+                  Coming Soon
                 </h3>
-                <p class="text-gray-600 mb-3">
-                  Penjelasan komprehensif mengenai pewarisan menurut hukum
-                  perdata, adat, dan Islam, termasuk ahli waris dan bagiannya.
-                </p>
+                <p class="text-gray-600 mb-4 text-base">Coming Soon</p>
                 <a
                   href="#"
-                  class="text-blue-600 hover:underline text-sm font-medium inline-block"
-                  >Baca Catatan Lengkap →</a
+                  class="text-blue-600 hover:underline text-base font-medium inline-block"
+                  >Coming Soon→</a
                 >
               </div>
             </div>
@@ -503,99 +515,87 @@
       </div>
 
       <!-- Album Class Page -->
-      <div class="page bg-f0f4f8">
+      <div class="page bg-f4f7f6">
         <div class="max-w-6xl mx-auto fade-in">
-          <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">
+          <h2
+            class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800"
+          >
             📸 Album Kenangan Kelas
           </h2>
-          <div class="card p-8">
-            <p class="text-gray-700 mb-8 text-center text-lg">
+          <div class="card p-10">
+            <p class="text-gray-700 mb-10 text-center text-lg md:text-xl">
               Kenangan manis dari perjalanan belajar kita bersama! Setiap foto
               menceritakan kisah.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div class="relative group card overflow-hidden">
                 <img
                   src="https://via.placeholder.com/600x400/AEC6CF/FFFFFF?text=Sesi+Pembukaan"
-                  alt="Foto Kelas 1 - Sesi Pembukaan"
-                  class="w-full h-56 object-cover rounded-t-lg transition-transform duration-300 group-hover:scale-105"
+                  alt="Foto Kelas 1 - Coming Soon"
+                  class="w-full h-64 object-cover rounded-t-xl transition-transform duration-300 group-hover:scale-105"
                 />
-                <div class="p-4">
-                  <p class="text-lg font-semibold text-gray-800">
-                    Sesi Pembukaan
-                  </p>
-                  <p class="text-sm text-gray-600">Momen awal kebersamaan.</p>
+                <div class="p-5">
+                  <p class="text-xl font-semibold text-gray-800">Coming Soon</p>
+                  <p class="text-sm text-gray-600 mt-1">Coming Soon</p>
                 </div>
               </div>
               <div class="relative group card overflow-hidden">
                 <img
                   src="https://via.placeholder.com/600x400/B3E0FF/FFFFFF?text=Diskusi+Kelompok"
-                  alt="Foto Kelas 2 - Diskusi Kelompok"
-                  class="w-full h-56 object-cover rounded-t-lg transition-transform duration-300 group-hover:scale-105"
+                  alt="Foto Kelas 2 - Coming Soon"
+                  class="w-full h-64 object-cover rounded-t-xl transition-transform duration-300 group-hover:scale-105"
                 />
-                <div class="p-4">
-                  <p class="text-lg font-semibold text-gray-800">
-                    Diskusi Kelompok
-                  </p>
-                  <p class="text-sm text-gray-600">
-                    Kolaborasi ide-ide brilian.
-                  </p>
+                <div class="p-5">
+                  <p class="text-xl font-semibold text-gray-800">Coming Soon</p>
+                  <p class="text-sm text-gray-600 mt-1">Coming Soon</p>
                 </div>
               </div>
               <div class="relative group card overflow-hidden">
                 <img
                   src="https://via.placeholder.com/600x400/C5E1A5/FFFFFF?text=Presentasi+Proyek"
-                  alt="Foto Kelas 3 - Presentasi Proyek"
-                  class="w-full h-56 object-cover rounded-t-lg transition-transform duration-300 group-hover:scale-105"
+                  alt="Foto Kelas 3 - Coming Soon"
+                  class="w-full h-64 object-cover rounded-t-xl transition-transform duration-300 group-hover:scale-105"
                 />
-                <div class="p-4">
-                  <p class="text-lg font-semibold text-gray-800">
-                    Presentasi Proyek
-                  </p>
-                  <p class="text-sm text-gray-600">
-                    Menampilkan hasil kerja keras.
-                  </p>
+                <div class="p-5">
+                  <p class="text-xl font-semibold text-gray-800">Coming Soon</p>
+                  <p class="text-sm text-gray-600 mt-1">Coming Soon</p>
                 </div>
               </div>
               <div class="relative group card overflow-hidden">
                 <img
                   src="https://via.placeholder.com/600x400/FFD180/FFFFFF?text=Momen+Santai"
-                  alt="Foto Kelas 4 - Momen Santai"
-                  class="w-full h-56 object-cover rounded-t-lg transition-transform duration-300 group-hover:scale-105"
+                  alt="Foto Kelas 4 - Coming Soon"
+                  class="w-full h-64 object-cover rounded-t-xl transition-transform duration-300 group-hover:scale-105"
                 />
-                <div class="p-4">
-                  <p class="text-lg font-semibold text-gray-800">
-                    Momen Santai
-                  </p>
-                  <p class="text-sm text-gray-600">
-                    Istirahat sejenak bersama.
-                  </p>
+                <div class="p-5">
+                  <p class="text-xl font-semibold text-gray-800">Coming Soon</p>
+                  <p class="text-sm text-gray-600 mt-1">Coming Soon</p>
                 </div>
               </div>
               <div class="relative group card overflow-hidden">
                 <img
                   src="https://via.placeholder.com/600x400/FFAB91/FFFFFF?text=Field+Trip"
-                  alt="Foto Kelas 5 - Field Trip"
-                  class="w-full h-56 object-cover rounded-t-lg transition-transform duration-300 group-hover:scale-105"
+                  alt="Foto Kelas 5 - Coming Soon"
+                  class="w-full h-64 object-cover rounded-t-xl transition-transform duration-300 group-hover:scale-105"
                 />
-                <div class="p-4">
-                  <p class="text-lg font-semibold text-gray-800">Field Trip</p>
-                  <p class="text-sm text-gray-600">Belajar di luar kelas.</p>
+                <div class="p-5">
+                  <p class="text-xl font-semibold text-gray-800">Coming Soon</p>
+                  <p class="text-sm text-gray-600 mt-1">Coming Soon</p>
                 </div>
               </div>
               <div class="relative group card overflow-hidden">
                 <img
                   src="https://via.placeholder.com/600x400/CFD8DC/FFFFFF?text=Wisuda+Mini"
-                  alt="Foto Kelas 6 - Wisuda Mini"
-                  class="w-full h-56 object-cover rounded-t-lg transition-transform duration-300 group-hover:scale-105"
+                  alt="Foto Kelas 6 - Coming Soon"
+                  class="w-full h-64 object-cover rounded-t-xl transition-transform duration-300 group-hover:scale-105"
                 />
-                <div class="p-4">
-                  <p class="text-lg font-semibold text-gray-800">Wisuda Mini</p>
-                  <p class="text-sm text-gray-600">Merayakan pencapaian.</p>
+                <div class="p-5">
+                  <p class="text-xl font-semibold text-gray-800">Coming Soon</p>
+                  <p class="text-sm text-gray-600 mt-1">Coming Soon</p>
                 </div>
               </div>
             </div>
-            <p class="text-gray-500 mt-10 text-sm text-center">
+            <p class="text-gray-500 mt-12 text-sm text-center">
               Punya foto keren dari kelas kita? Yuk, bagikan! Hubungi kami untuk
               menambahkannya ke album ini.
             </p>
@@ -606,15 +606,15 @@
       <!-- Contact Page -->
       <div class="page bg-white">
         <div class="max-w-6xl mx-auto text-center fade-in">
-          <h2 class="text-4xl font-bold mb-12 text-gray-800">
+          <h2 class="text-4xl md:text-5xl font-bold mb-16 text-gray-800">
             ✉️ Hubungi Kami
           </h2>
-          <div class="card p-8 max-w-md mx-auto">
-            <p class="text-gray-700 mb-6 text-lg">
+          <div class="card p-10 max-w-lg mx-auto">
+            <p class="text-gray-700 mb-8 text-lg md:text-xl">
               Ada pertanyaan, saran, atau ingin berkolaborasi? Jangan ragu untuk
               menghubungi kami melalui formulir di bawah ini.
             </p>
-            <form class="space-y-5" id="contact-form">
+            <form class="space-y-6" id="contact-form">
               <input
                 type="text"
                 placeholder="Nama Lengkap Anda"
@@ -629,7 +629,7 @@
               />
               <textarea
                 placeholder="Pesan Anda"
-                rows="5"
+                rows="6"
                 class="w-full input-field"
                 required
               ></textarea>
@@ -637,7 +637,7 @@
                 Kirim Pesan
               </button>
             </form>
-            <p class="text-green-600 mt-4 hidden" id="success-message">
+            <p class="text-green-600 mt-6 hidden" id="success-message">
               Pesan Anda berhasil terkirim! Terima kasih.
             </p>
           </div>
@@ -677,15 +677,33 @@
           navItems.forEach((nav) => nav.classList.remove("active"));
           this.classList.add("active");
 
+          // Simpan indeks halaman saat ini ke localStorage
+          localStorage.setItem("currentPageIndex", pageIndex);
+
           closeSidebar();
         });
       });
 
-      // Set initial active nav item
+      // Set initial active nav item and load last viewed page
       document.addEventListener("DOMContentLoaded", () => {
-        document
-          .querySelector('.nav-item[data-page="0"]')
-          .classList.add("active");
+        const savedPageIndex = localStorage.getItem("currentPageIndex");
+        let initialPageIndex = 0; // Default ke beranda
+
+        if (savedPageIndex !== null) {
+          initialPageIndex = parseInt(savedPageIndex);
+        }
+
+        // Set tampilan slider ke halaman yang disimpan atau beranda
+        pageSlider.style.transform = `translateX(-${initialPageIndex * 100}vw)`;
+
+        // Set nav item yang aktif
+        navItems.forEach((nav) => nav.classList.remove("active"));
+        const activeNavItem = document.querySelector(
+          `.nav-item[data-page="${initialPageIndex}"]`
+        );
+        if (activeNavItem) {
+          activeNavItem.classList.add("active");
+        }
       });
 
       // Tombol Explore di halaman Home
@@ -699,6 +717,8 @@
           document
             .querySelector('.nav-item[data-page="1"]')
             .classList.add("active");
+          // Simpan indeks halaman saat ini ke localStorage
+          localStorage.setItem("currentPageIndex", 1);
           closeSidebar();
         });
       }
