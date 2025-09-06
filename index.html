@@ -10,12 +10,25 @@
       rel="stylesheet"
     />
     <style>
+      /* Global Reset for Scrollbars */
+      html,
+      body {
+        overflow: hidden; /* Prevent all scrolling */
+        height: 100%; /* Ensure body takes full viewport height */
+        width: 100%; /* Ensure body takes full viewport width */
+        margin: 0;
+        padding: 0;
+      }
+
+      /* General Body Styles */
       body {
         font-family: "Poppins", sans-serif;
-        padding-top: 80px;
+        padding-top: 80px; /* Space for fixed menu toggle */
         background-color: #f4f7f6; /* Light, clean background */
         color: #333; /* Darker text for better contrast */
       }
+
+      /* Sidebar Styles */
       .sidebar {
         position: fixed;
         left: 0;
@@ -24,16 +37,19 @@
         width: 280px; /* Slightly wider sidebar */
         background: #ffffff;
         border-right: 1px solid #e0e0e0; /* Softer border */
-        transform: translateX(-280px);
+        transform: translateX(-280px); /* Hidden by default */
         transition: transform 0.3s ease-in-out; /* Smoother transition */
         z-index: 1000;
-        overflow-y: auto;
-        padding-top: 80px;
+        overflow-y: auto; /* Enable scrolling for long content within sidebar */
+        padding-top: 80px; /* Space for top content */
         box-shadow: 4px 0 15px rgba(0, 0, 0, 0.08); /* Stronger, more defined shadow */
       }
+
       .sidebar.open {
-        transform: translateX(0);
+        transform: translateX(0); /* Show sidebar */
       }
+
+      /* Overlay Styles */
       .overlay {
         position: fixed;
         top: 0;
@@ -46,10 +62,13 @@
         transition: opacity 0.3s ease-in-out;
         z-index: 999;
       }
+
       .overlay.show {
         opacity: 1;
         visibility: visible;
       }
+
+      /* Menu Toggle Button Styles */
       .menu-toggle {
         position: fixed;
         top: 20px;
@@ -64,27 +83,39 @@
         transition: background-color 0.3s ease, transform 0.2s ease,
           box-shadow 0.3s ease;
       }
+
       .menu-toggle:hover {
         background-color: #2563eb; /* Tailwind blue-600 */
-        transform: translateY(-3px);
+        transform: translateY(-3px); /* Lift effect */
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
       }
+
+      /* Page Slider and Individual Page Styles */
       .page-slider {
         display: flex;
-        width: 100%;
+        width: 100vw; /* Ensure it takes full viewport width */
+        height: calc(
+          100vh - 80px
+        ); /* Full viewport height minus body padding-top */
         transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother transition */
       }
+
       .page {
-        min-width: 100vw;
+        min-width: 100vw; /* Each page takes full viewport width */
+        height: 100%; /* Each page takes full height of its parent (page-slider) */
         padding: 60px 20px; /* More padding for content */
         box-sizing: border-box;
         display: flex; /* Use flexbox for centering content */
         align-items: center; /* Center vertically */
         justify-content: center; /* Center horizontally */
+        overflow-y: auto; /* Allow content within a page to scroll if it overflows */
       }
+
+      /* Fade-in Animation for Page Content */
       .fade-in {
         animation: fadeIn 1s ease-in-out;
       }
+
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -95,156 +126,173 @@
           transform: translateY(0);
         }
       }
+
+      /* Card Styles */
       .card {
         background-color: #ffffff;
         border-radius: 16px; /* More rounded */
         box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1); /* Softer, deeper shadow */
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
+
       .card:hover {
         transform: translateY(-8px); /* More pronounced lift */
         box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
       }
+
+      /* Navigation Item Styles */
       .nav-item {
         transition: background-color 0.2s ease, color 0.2s ease,
           transform 0.1s ease;
       }
+
       .nav-item:hover {
         background-color: #eef2f5; /* Lighter hover background */
         color: #2d3748;
         transform: translateX(5px); /* Slight slide effect */
       }
+
       .nav-item.active {
         background-color: #3b82f6; /* Tailwind blue-500 */
         color: #ffffff;
         font-weight: 600;
         box-shadow: inset 3px 0 0 #1d4ed8; /* Subtle left border for active state */
       }
+
+      /* Primary Button Styles */
       .btn-primary {
         background-color: #3b82f6; /* Tailwind blue-500 */
         color: #ffffff;
         padding: 14px 35px; /* Larger padding */
-        border-radius: 9999px;
+        border-radius: 9999px; /* Pill shape */
         font-weight: 600;
         letter-spacing: 0.025em; /* Slight letter spacing */
         transition: background-color 0.3s ease, transform 0.2s ease,
           box-shadow 0.3s ease;
       }
+
       .btn-primary:hover {
         background-color: #2563eb; /* Tailwind blue-600 */
         transform: translateY(-3px);
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
       }
+
+      /* Input Field Styles */
       .input-field {
         border: 1px solid #d1d5db; /* Lighter border */
         border-radius: 10px; /* More rounded */
         padding: 14px; /* Larger padding */
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
       }
+
       .input-field:focus {
         outline: none;
         border-color: #3b82f6; /* Tailwind blue-500 */
         box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25); /* Softer, wider shadow */
       }
 
-      /* --- Penambahan/Penyesuaian untuk Responsivitas Lanjutan --- */
+      /* --- Responsive Adjustments --- */
 
-      /* Pastikan gambar dan media lainnya responsif secara default */
+      /* Ensure images and other media are responsive by default */
       img,
       video,
       iframe {
         max-width: 100%;
-        height: auto; /* Penting untuk menjaga aspek rasio */
-        display: block; /* Menghilangkan spasi bawah yang tidak diinginkan pada beberapa gambar */
+        height: auto; /* Important to maintain aspect ratio */
+        display: block; /* Removes unwanted space below images */
       }
 
-      /* Penyesuaian untuk layar kecil (misalnya handphone dan tablet kecil) */
+      /* Adjustments for small screens (e.g., mobile phones and small tablets) */
       @media (max-width: 768px) {
-        /* Menggunakan 768px untuk cakupan yang lebih luas */
         body {
-          padding-top: 60px; /* Kurangi padding atas pada layar kecil */
+          padding-top: 60px; /* Reduce top padding on small screens */
+        }
+        .page-slider {
+          height: calc(
+            100vh - 60px
+          ); /* Adjust height for smaller padding-top */
         }
         .menu-toggle {
           top: 15px;
           left: 15px;
-          padding: 10px; /* Kurangi padding tombol toggle */
-          border-radius: 8px; /* Kurangi border-radius */
+          padding: 10px; /* Reduce toggle button padding */
+          border-radius: 8px; /* Reduce border-radius */
         }
         .sidebar {
-          width: 250px; /* Sedikit lebih kecil untuk layar sangat sempit */
+          width: 250px; /* Slightly smaller for very narrow screens */
           transform: translateX(-250px);
-          padding-top: 60px; /* Sesuaikan padding sidebar */
+          padding-top: 60px; /* Adjust sidebar padding */
         }
         .sidebar.open {
           transform: translateX(0);
         }
         .page {
-          padding: 40px 15px; /* Kurangi padding konten pada layar kecil */
+          padding: 40px 15px; /* Reduce content padding on small screens */
         }
         .page h1 {
-          font-size: 3.5rem; /* Sesuaikan ukuran font judul utama */
+          font-size: 3.5rem; /* Adjust main heading font size */
           line-height: 1.2;
         }
         .page p {
-          font-size: 1rem; /* Sesuaikan ukuran font paragraf */
+          font-size: 1rem; /* Adjust paragraph font size */
         }
         .btn-primary {
-          padding: 12px 25px; /* Kurangi padding tombol utama */
+          padding: 12px 25px; /* Reduce primary button padding */
           font-size: 0.9rem;
         }
         .card {
-          padding: 20px; /* Kurangi padding card */
+          padding: 20px; /* Reduce card padding */
         }
         .card h5 {
-          font-size: 1.5rem; /* Sesuaikan ukuran font judul card */
+          font-size: 1.5rem; /* Adjust card title font size */
         }
         .card p {
-          font-size: 0.9rem; /* Sesuaikan ukuran font teks card */
+          font-size: 0.9rem; /* Adjust card text font size */
         }
         .input-field {
-          padding: 10px; /* Kurangi padding input field */
-          border-radius: 8px; /* Kurangi border-radius input field */
+          padding: 10px; /* Reduce input field padding */
+          border-radius: 8px; /* Reduce input field border-radius */
         }
-        /* Untuk tata letak grid di halaman "Penyimpanan" */
+        /* For grid layout on "Penyimpanan" page */
         .grid.md\:grid-cols-3 {
-          grid-template-columns: 1fr; /* Ubah menjadi satu kolom di layar kecil */
+          grid-template-columns: 1fr; /* Change to single column on small screens */
         }
-        /* Untuk tata letak grid di halaman "Jadwal" */
+        /* For grid layout on "Jadwal" page */
         .grid.md\:grid-cols-5 {
           grid-template-columns: repeat(
             auto-fit,
             minmax(150px, 1fr)
-          ); /* Sesuaikan agar fleksibel */
-          gap: 15px; /* Kurangi jarak antar kolom */
+          ); /* Adjust to be flexible */
+          gap: 15px; /* Reduce gap between columns */
         }
       }
 
-      /* Penyesuaian untuk layar sangat besar (misalnya TV atau monitor desktop besar) */
+      /* Adjustments for very large screens (e.g., large desktop monitors) */
       @media (min-width: 1280px) {
         .page {
-          padding: 80px 40px; /* Tambah padding konten pada layar besar */
+          padding: 80px 40px; /* Increase content padding on large screens */
         }
         .max-w-6xl {
-          max-width: 1400px; /* Beri ruang lebih pada konten utama */
+          max-width: 1400px; /* Give more space to main content */
         }
         .page h1 {
-          font-size: 6rem; /* Perbesar ukuran font judul utama */
+          font-size: 6rem; /* Enlarge main heading font size */
         }
         .page p {
-          font-size: 1.5rem; /* Perbesar ukuran font paragraf */
+          font-size: 1.5rem; /* Enlarge paragraph font size */
         }
         .btn-primary {
-          padding: 16px 40px; /* Perbesar padding tombol utama */
+          padding: 16px 40px; /* Enlarge primary button padding */
           font-size: 1.1rem;
         }
         .card {
-          padding: 40px; /* Perbesar padding card */
+          padding: 40px; /* Enlarge card padding */
         }
         .card h5 {
-          font-size: 2.5rem; /* Perbesar ukuran font judul card */
+          font-size: 2.5rem; /* Enlarge card title font size */
         }
         .card p {
-          font-size: 1.1rem; /* Perbesar ukuran font teks card */
+          font-size: 1.1rem; /* Enlarge card text font size */
         }
       }
     </style>
@@ -778,7 +826,7 @@
           navItems.forEach((nav) => nav.classList.remove("active"));
           this.classList.add("active");
 
-          // Simpan indeks halaman saat ini ke localStorage
+          // Save current page index to localStorage
           localStorage.setItem("currentPageIndex", pageIndex);
 
           closeSidebar();
@@ -788,16 +836,16 @@
       // Set initial active nav item and load last viewed page
       document.addEventListener("DOMContentLoaded", () => {
         const savedPageIndex = localStorage.getItem("currentPageIndex");
-        let initialPageIndex = 0; // Default ke beranda
+        let initialPageIndex = 0; // Default to home page
 
         if (savedPageIndex !== null) {
           initialPageIndex = parseInt(savedPageIndex);
         }
 
-        // Set tampilan slider ke halaman yang disimpan atau beranda
+        // Set slider display to saved page or home
         pageSlider.style.transform = `translateX(-${initialPageIndex * 100}vw)`;
 
-        // Set nav item yang aktif
+        // Set active nav item
         navItems.forEach((nav) => nav.classList.remove("active"));
         const activeNavItem = document.querySelector(
           `.nav-item[data-page="${initialPageIndex}"]`
@@ -807,18 +855,18 @@
         }
       });
 
-      // Tombol Explore di halaman Home
+      // Explore button on Home page
       const homeExploreBtn = document.getElementById("home-explore-btn");
       if (homeExploreBtn) {
         homeExploreBtn.addEventListener("click", () => {
-          // Geser slider ke halaman About (index 1)
+          // Slide to About page (index 1)
           pageSlider.style.transform = "translateX(-100vw)";
           // Update active nav item
           navItems.forEach((nav) => nav.classList.remove("active"));
           document
             .querySelector('.nav-item[data-page="1"]')
             .classList.add("active");
-          // Simpan indeks halaman saat ini ke localStorage
+          // Save current page index to localStorage
           localStorage.setItem("currentPageIndex", 1);
           closeSidebar();
         });
@@ -833,7 +881,7 @@
           // Simulate form submission
           setTimeout(() => {
             successMessage.classList.remove("hidden");
-            contactForm.reset();
+            contactForm.reset(); // Clear form fields
             // Hide message after 3 seconds
             setTimeout(() => {
               successMessage.classList.add("hidden");
